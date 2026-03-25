@@ -195,6 +195,7 @@
         let gameSpeed = 150;
         let isPaused = false;
         let gameStarted = false;
+        let isGameOver = false;
 
         // 更新最高分显示
         document.getElementById('highScore').textContent = highScore;
@@ -208,6 +209,9 @@
             const RIGHT = 'ArrowRight';
             const UP = 'ArrowUp';
             const DOWN = 'ArrowDown';
+
+            // 游戏结束时忽略输入
+            if (isGameOver) return;
 
             if (!gameStarted) {
                 startGame();
@@ -261,6 +265,7 @@
             gameSpeed = 150;
             isPaused = false;
             gameStarted = false;
+            isGameOver = false;
             document.getElementById('currentScore').textContent = score;
             document.getElementById('gameOver').classList.remove('show');
             drawGame();
@@ -401,6 +406,7 @@
         function gameOver() {
             clearInterval(gameLoop);
             gameStarted = false;
+            isGameOver = true;
             document.getElementById('finalScore').textContent = score;
             document.getElementById('gameOver').classList.add('show');
         }
