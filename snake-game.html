@@ -269,6 +269,9 @@
         function updateGame() {
             if (isPaused) return;
 
+            // 还没选择方向时不移动
+            if (dx === 0 && dy === 0) return;
+
             // 移动蛇
             const head = { x: snake[0].x + dx, y: snake[0].y + dy };
 
